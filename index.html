@@ -79,6 +79,26 @@
             <h2 class="section-title">About Violina</h2>
             <p>Violinaは、AI技術とアーティストの感性が融合した次世代のAIクリエイティブ集団です。私たちは、テクノロジーが可能にする新しい表現の地平を追求しています。</p>
         </section>
+
+        <section id="contact" class="section">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-container glass-morphism animate-in">
+                <p class="contact-lead">仕事の依頼やコラボレーションについては、以下のフォームよりお気軽にお問い合わせください。</p>
+                <form action="https://formspree.io/f/xvgzbgzl" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="email">連絡先メールアドレス</label>
+                        <input type="email" id="email" name="email" required placeholder="example@mail.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">連絡内容</label>
+                        <textarea id="message" name="message" required placeholder="お問い合わせ内容をご記入ください" rows="5"></textarea>
+                    </div>
+                    <!-- 送信後のリダイレクト先 (GitHub PagesのURL) -->
+                    <input type="hidden" name="_next" value="https://jayz-ai.github.io/violina/">
+                    <button type="submit" class="submit-btn">メッセージを送信</button>
+                </form>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
@@ -86,3 +106,4 @@
     </footer>
 </body>
 </html>
+
