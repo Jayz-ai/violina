@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const scrolled = window.pageYOffset;
         const parallax = document.querySelector('.parallax-bg');
         if (parallax) {
-            parallax.style.transform = \	ranslateY(\px)\;
+            parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
         }
     });
 
@@ -29,9 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 });
