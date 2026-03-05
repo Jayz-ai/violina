@@ -38,48 +38,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- AJAX Form Submission ---
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
+    // --- Optimized AJAX Form Submission (Based on Formspree Example) ---
+    const form = document.querySelector('.contact-form');
+    if (form) {
+        async function handleSubmit(event) {
+            event.preventDefault();
             const status = document.createElement('div');
             status.className = 'form-status';
-            contactForm.appendChild(status);
-
-            const data = new FormData(contactForm);
-            const button = contactForm.querySelector('.submit-btn');
+            
+            // 既存のステータスメッセージがあれば削除
+            const oldStatus = form.querySelector('.form-status');
+            if (oldStatus) oldStatus.remove();
+            
+            form.appendChild(status);
+            const data = new FormData(event.target);
+            const button = form.querySelector('.submit-btn');
             button.disabled = true;
             button.innerText = '送信中...';
 
-            try {
-                const response = await fetch(contactForm.action, {
-                    method: 'POST',
-                    body: data,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    status.innerHTML = '<p class="success-msg">メッセージを送信しました。ありがとうございます！</p>';
-                    contactForm.reset();
-                    button.style.display = 'none'; // 成功したらボタンを隠す
-                } else {
-                    const result = await response.json();
-                    if (Object.hasOwn(result, 'errors')) {
-                        status.innerHTML = `<p class="error-msg">${result.errors.map(error => error.message).join(", ")}</p>`;
-                    } else {
-                        status.innerHTML = '<p class="error-msg">送信に失敗しました。後ほど再度お試しください。</p>';
-                    }
-                    button.disabled = false;
-                    button.innerText = 'メッセージを送信';
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
                 }
-            } catch (error) {
-                status.innerHTML = '<p class="error-msg">ネットワークエラーが発生しました。</p>';
+            }).then(response => {
+                if (response.ok) {
+                    status.innerHTML = '<p class="success-msg">Thanks for your submission!</p>';
+                    form.reset();
+                    button.style.display = 'none';
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            status.innerHTML = `<p class="error-msg">${data["errors"].map(error => error["message"]).join(", ")}</p>`;
+                        } else {
+                            status.innerHTML = '<p class="error-msg">Oops! There was a problem submitting your form</p>';
+                        }
+                        button.disabled = false;
+                        button.innerText = 'メッセージを送信';
+                    })
+                }
+            }).catch(error => {
+                status.innerHTML = '<p class="error-msg">Oops! There was a problem submitting your form</p>';
                 button.disabled = false;
                 button.innerText = 'メッセージを送信';
-            }
-        });
+            });
+        }
+        form.addEventListener("submit", handleSubmit);
     }
 });
