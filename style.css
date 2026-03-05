@@ -21,7 +21,9 @@ body {
     overflow-x: hidden;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-family: 'Outfit', sans-serif;
 }
 
@@ -199,8 +201,9 @@ h1, h2, h3 {
 }
 
 @media (max-width: 768px) {
-    .glitch-text { font-size: 3rem; }
-    .nav-links { display: none; }
+    .glitch-text {
+        font-size: 3rem;
+    }
 }
 
 /* Contact Form */
@@ -292,8 +295,15 @@ h1, h2, h3 {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 button:disabled {
@@ -352,9 +362,11 @@ button:disabled {
     .menu-toggle.active .bar:nth-child(2) {
         opacity: 0;
     }
+
     .menu-toggle.active .bar:nth-child(1) {
         transform: translateY(9px) rotate(45deg);
     }
+
     .menu-toggle.active .bar:nth-child(3) {
         transform: translateY(-9px) rotate(-45deg);
     }
