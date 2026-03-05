@@ -312,6 +312,7 @@ button:disabled {
 }
 
 .bar {
+    display: block;
     width: 25px;
     height: 3px;
     background-color: var(--text-color);
