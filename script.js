@@ -87,3 +87,26 @@ document.addEventListener('DOMContentLoaded', () => {
         form.addEventListener("submit", handleSubmit);
     }
 });
+
+
+    // --- Mobile Menu Toggle ---
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (mobileMenu) {
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+    }
+
+    // メニュー項目クリック時にメニューを閉じる
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
+
+
+
