@@ -37,4 +37,49 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // --- AJAX Form Submission ---
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const status = document.createElement('div');
+            status.className = 'form-status';
+            contactForm.appendChild(status);
+
+            const data = new FormData(contactForm);
+            const button = contactForm.querySelector('.submit-btn');
+            button.disabled = true;
+            button.innerText = '送信中...';
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    status.innerHTML = '<p class="success-msg">メッセージを送信しました。ありがとうございます！</p>';
+                    contactForm.reset();
+                    button.style.display = 'none'; // 成功したらボタンを隠す
+                } else {
+                    const result = await response.json();
+                    if (Object.hasOwn(result, 'errors')) {
+                        status.innerHTML = `<p class="error-msg">${result.errors.map(error => error.message).join(", ")}</p>`;
+                    } else {
+                        status.innerHTML = '<p class="error-msg">送信に失敗しました。後ほど再度お試しください。</p>';
+                    }
+                    button.disabled = false;
+                    button.innerText = 'メッセージを送信';
+                }
+            } catch (error) {
+                status.innerHTML = '<p class="error-msg">ネットワークエラーが発生しました。</p>';
+                button.disabled = false;
+                button.innerText = 'メッセージを送信';
+            }
+        });
+    }
 });
