@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Violina | AI Artist Collective</title>
-    <meta name="description" content="AI Artist Collective 'Violina' - The intersection of AI technology and artistic vision.">
+    <meta name="description"
+        content="AI Artist Collective 'Violina' - The intersection of AI technology and artistic vision.">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Outfit:wght@300;600;800&display=swap" rel="stylesheet">
-        <!-- Favicon -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Outfit:wght@300;600;800&display=swap"
+        rel="stylesheet">
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=2">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=2">
@@ -17,17 +21,23 @@
     <link rel="manifest" href="manifest.json?v=2">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="script.js" defer></script>
 </head>
+
 <body>
+    <div class="stars-background"></div>
     <header class="header">
         <nav class="nav glass-morphism">
             <div class="logo">
                 <img src="images/00_Logo/Violina_Logo_tr.png" alt="Violina Logo" id="header-logo">
             </div>
-            <div class="menu-toggle" id="mobile-menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
-                <ul class="nav-links">
+            <div class="menu-toggle" id="mobile-menu"><span class="bar"></span><span class="bar"></span><span
+                    class="bar"></span></div>
+            <ul class="nav-links">
                 <li><a href="#hero">Home</a></li>
+                <li><a href="#music">Music</a></li>
                 <li><a href="#members">Members</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -46,6 +56,19 @@
             </div>
         </section>
 
+        <section id="music" class="section">
+            <h2 class="section-title">Music</h2>
+            <div class="video-container glass-morphism animate-in">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/-jREv5Wy6h4" title="Violina - New Release"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
         <section id="members" class="section">
             <h2 class="section-title">Members</h2>
             <div class="member-grid">
@@ -55,9 +78,11 @@
                         <img src="images/02_member/Mina/Mina_bustup.png" alt="Mina" class="member-img">
                     </div>
                     <div class="member-info">
-                        <h3>Mina</h3>
+                        <h3>水面みな（Mina Minamo） <a href="https://x.com/minaAiminamo" target="_blank"
+                                rel="noopener noreferrer" class="member-sns-link"><i
+                                    class="fa-brands fa-x-twitter"></i></a></h3>
                         <p class="role">Vocals & Violin</p>
-                        <p class="description">透き通るような歌声と、AIによって拡張されたバイオリン演奏が特徴。</p>
+                        <p class="description">幼少時から習っていたViolinと滑らかな音程変化をともなう透き通る歌声で刹那と幻想のメロディを司る。星空と海が好き。</p>
                     </div>
                 </div>
                 <!-- Jayz -->
@@ -66,9 +91,17 @@
                         <img src="images/02_member/Jayz/Jayz_face.png" alt="Jayz" class="member-img">
                     </div>
                     <div class="member-info">
-                        <h3>Jayz</h3>
-                        <p class="role">Guitar & Composition</p>
-                        <p class="description">複雑な音響構造とギターサウンドを融合させる作曲の要。</p>
+                        <h3>Jayz
+                            <a href="https://x.com/PElfines71321" target="_blank" rel="noopener noreferrer"
+                                class="member-sns-link"><i class="fa-brands fa-x-twitter"></i></a>
+                            <a href="https://www.youtube.com/@jayzaicreationchannel" target="_blank"
+                                rel="noopener noreferrer" class="member-sns-link"><i
+                                    class="fa-brands fa-youtube"></i></a>
+                        </h3>
+                        <p class="role">Guitars, Piano, Synthesizer, AI-Creation</p>
+                        <p class="description">
+                            Violinaのサウンド全般を生み出すメインクリエーター。AIを含めた様々な手法を掛け合わせて唯一無二のサウンドスケープを展開する。SF好きでステージではいつもサイバネティックなテックスーツを着用。
+                        </p>
                     </div>
                 </div>
                 <!-- Fujii -->
@@ -101,7 +134,8 @@
                     </div>
                     <div class="form-group">
                         <label for="message">連絡内容</label>
-                        <textarea id="message" name="message" required placeholder="お問い合わせ内容をご記入ください" rows="5"></textarea>
+                        <textarea id="message" name="message" required placeholder="お問い合わせ内容をご記入ください"
+                            rows="5"></textarea>
                     </div>
                     <!-- 送信後のリダイレクト先 (GitHub PagesのURL) -->
                     <input type="hidden" name="_next" value="https://jayz-ai.github.io/violina/">
@@ -112,13 +146,14 @@
     </main>
 
     <footer class="footer">
-        <p>&copy; 2026 Violina AI Artist Collective. All rights reserved.</p>
+        <div class="sns-links">
+            <a href="https://x.com/" target="_blank" rel="noopener noreferrer" title="X (Twitter)"><i
+                    class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/@ViolinaOfficialChannel" target="_blank" rel="noopener noreferrer"
+                title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <p>&copy; 2026 Violina All rights reserved.</p>
     </footer>
 </body>
+
 </html>
-
-
-
-
-
-
