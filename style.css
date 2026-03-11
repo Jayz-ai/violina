@@ -150,19 +150,10 @@ body {
     animation: stars-move-fast 150s linear infinite, stars-blink-spica 8s ease-in-out infinite alternate;
 }
 
-@keyframes stars-move-spica {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(-100vh);
-    }
-}
-
 @keyframes stars-blink-spica {
-    0% { opacity: 0.4; transform: scale(0.9); }
-    50% { opacity: 1; transform: scale(1.1); }
-    100% { opacity: 0.5; transform: scale(0.95); }
+    0% { opacity: 0.4; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
 }
 
 h1,
