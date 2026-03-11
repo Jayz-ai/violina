@@ -25,5 +25,10 @@ window.APP_DATA = {
             "content": "出演者紹介記事 七人目はJayzさんと水面みなさん！\nぜひご覧ください！\n\nhttps://note.com/maenoryo/n/nb64ac4203244",
             "status": "hidden"
         }
+    ],
+    "goodsImages": [
+        "Goods02.png",
+        "Goods03.png",
+        "Goods04.png"
     ]
 };

@@ -53,7 +53,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Goods Loading ---
+    function loadGoods() {
+        const container = document.getElementById('goods-images-container');
+        if (!container || !window.APP_DATA || !window.APP_DATA.goodsImages) return;
+
+        const fixedImage = 'images/04_Goods/Goods01.jpg';
+        const otherImages = window.APP_DATA.goodsImages;
+        const randomImageName = otherImages[Math.floor(Math.random() * otherImages.length)];
+        const randomImage = `images/04_Goods/${randomImageName}`;
+
+        const selectedImages = [fixedImage, randomImage];
+        container.innerHTML = '';
+
+        selectedImages.forEach(src => {
+            const card = document.createElement('div');
+            card.className = 'goods-card animate-in';
+            card.innerHTML = `<img src="${src}" alt="Violina Official Goods">`;
+            container.appendChild(card);
+            
+            // Re-observe for animation
+            observer.observe(card);
+        });
+    }
+
     loadNews();
+    loadGoods();
     // Parallax effect for hero
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
