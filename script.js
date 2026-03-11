@@ -28,7 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const container = document.getElementById('news-container');
         if (!container || !window.APP_DATA || !window.APP_DATA.news) return;
 
-        const publicNews = window.APP_DATA.news.filter(news => news.status === 'public' || !news.status);
+        // Filter out hidden news or drafts
+        const publicNews = window.APP_DATA.news.filter(news => news.status !== 'hidden');
         container.innerHTML = '';
         
         // 最新5件のみ表示
