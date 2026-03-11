@@ -5,13 +5,6 @@
 window.APP_DATA = {
     "news": [
         {
-            "id": 18,
-            "date": "2026.03.08",
-            "title": "🎉オフィシャルサイト公開！🎉",
-            "content": "刹那と幻想のAIサウンドユニット Violina のオフィシャルWebサイトがオープンしました！\n新曲情報など更新していきますので、よろしくお願いします🎻✨",
-            "status": "public"
-        },
-        {
             "id": 17,
             "date": "2026.03.06",
             "title": "【出演情報】AISpringFES2026出演及び当日の配信詳細",
@@ -20,10 +13,17 @@ window.APP_DATA = {
         },
         {
             "id": 15,
-            "date": "2026.03.01",
-            "title": "【紹介記事】AISpring出演者紹介記事　7th Artist. Jayzさん/水面みなさん公開！",
-            "content": "出演者紹介記事 七人目はJayzさんと水面みなさん！\nぜひご覧ください！\n\nhttps://note.com/maenoryo/n/nb64ac4203244",
-            "status": "hidden"
+            "date": "2026.03.11",
+            "title": "【紹介記事】Violina オフィシャルグッズ販売開始！",
+            "content": "SUZURIでViolinaのオフィシャルグッズ販売がスタートしました🎉\nぜひのぞいてみてください🎻\n\n＜SUZURI｜Violina Officialグッズストア＞\nhttps://suzuri.jp/ViolinaOfficial",
+            "status": "public"
+        },
+        {
+            "id": 18,
+            "date": "2026.03.08",
+            "title": "🎉オフィシャルサイト公開！🎉",
+            "content": "刹那と幻想のAIサウンドユニット Violina のオフィシャルWebサイトがオープンしました！\n新曲情報など更新していきますので、よろしくお願いします🎻✨",
+            "status": "public"
         }
     ],
     "goodsImages": [
