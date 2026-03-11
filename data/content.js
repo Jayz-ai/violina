@@ -23,7 +23,7 @@ window.APP_DATA = {
             "date": "2026.03.01",
             "title": "【紹介記事】AISpring出演者紹介記事　7th Artist. Jayzさん/水面みなさん公開！",
             "content": "出演者紹介記事 七人目はJayzさんと水面みなさん！\nぜひご覧ください！\n\nhttps://note.com/maenoryo/n/nb64ac4203244",
-            "status": "public"
+            "status": "hidden"
         }
     ]
 };
