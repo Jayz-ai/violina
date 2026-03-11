@@ -13,14 +13,14 @@ window.APP_DATA = {
         },
         {
             "id": 15,
-            "date": "2026.03.11",
+            "date": "2026.03.6",
             "title": "【紹介記事】Violina オフィシャルグッズ販売開始！",
             "content": "SUZURIでViolinaのオフィシャルグッズ販売がスタートしました🎉\nぜひのぞいてみてください🎻\n\n＜SUZURI｜Violina Officialグッズストア＞\nhttps://suzuri.jp/ViolinaOfficial",
             "status": "public"
         },
         {
             "id": 18,
-            "date": "2026.03.08",
+            "date": "2026.03.06",
             "title": "🎉オフィシャルサイト公開！🎉",
             "content": "刹那と幻想のAIサウンドユニット Violina のオフィシャルWebサイトがオープンしました！\n新曲情報など更新していきますので、よろしくお願いします🎻✨",
             "status": "public"
