@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const container = document.getElementById('goods-images-container');
         if (!container || !window.APP_DATA || !window.APP_DATA.goodsImages) return;
 
-        const fixedImage = 'images/04_Goods/Goods01.jpg';
+        const fixedImage = 'images/04_Goods/Goods01.png';
         const otherImages = window.APP_DATA.goodsImages;
         const randomImageName = otherImages[Math.floor(Math.random() * otherImages.length)];
         const randomImage = `images/04_Goods/${randomImageName}`;
