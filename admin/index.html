@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Violina | News Admin</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <header>
+            <h1>Violina News Admin</h1>
+            <div class="header-actions">
+                <button id="btn-deploy" class="btn-primary">GitHubに反映 (Deploy)</button>
+                <div id="deploy-status" class="status-msg hidden"></div>
+            </div>
+        </header>
+
+        <div class="main-layout">
+            <!-- Sidebar: News List -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h2>記事一覧</h2>
+                    <button id="btn-new" class="btn-secondary">+ 新規追加</button>
+                </div>
+                <ul id="news-list" class="news-list">
+                    <!-- JSで描画 -->
+                </ul>
+            </aside>
+
+            <!-- Main: Editor -->
+            <main class="editor">
+                <div class="editor-header">
+                    <h2 id="editor-title">記事の編集</h2>
+                    <div id="save-status" class="status-msg hidden"></div>
+                </div>
+
+                <form id="news-form">
+                    <input type="hidden" id="news-id">
+                    <div class="form-group">
+                        <label for="news-number-id">管理用ID (自動採番されます)</label>
+                        <input type="number" id="news-number-id" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="news-date">日付 (YYYY.MM.DD)</label>
+                        <input type="text" id="news-date" placeholder="2025.05.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="news-title">タイトル</label>
+                        <input type="text" id="news-title" placeholder="ニュースのタイトルを入力">
+                    </div>
+                    <div class="form-group">
+                        <label for="news-content">内容</label>
+                        <textarea id="news-content" rows="15" placeholder="ニュースの詳細内容を入力"></textarea>
+                    </div>
+                </form>
+
+                <div class="editor-actions">
+                    <button id="btn-preview" class="btn-outline">プレビュー</button>
+                    <div class="save-buttons">
+                        <button id="btn-save-draft" class="btn-secondary">下書き保存 (非表示)</button>
+                        <button id="btn-publish" class="btn-primary">公開として保存</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Preview Modal -->
+    <div id="preview-modal" class="modal hidden">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h3>プレビュー表示</h3>
+                <button id="btn-close-preview" class="btn-close">×</button>
+            </header>
+            <div class="preview-area glass-morphism">
+                <div class="news-item">
+                    <div id="preview-date" class="news-date"></div>
+                    <div id="preview-title" class="news-title"></div>
+                    <div id="preview-content" class="news-detail" style="display:block;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
