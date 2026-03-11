@@ -160,9 +160,9 @@ body {
 }
 
 @keyframes stars-blink-spica {
-    0% { opacity: 0.4; transform: scale(0.9) translateY(0); }
-    50% { opacity: 1; transform: scale(1.1) translateY(0); }
-    100% { opacity: 0.5; transform: scale(0.95) translateY(0); }
+    0% { opacity: 0.4; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.1); }
+    100% { opacity: 0.5; transform: scale(0.95); }
 }
 
 h1,
