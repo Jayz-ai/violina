@@ -146,7 +146,8 @@ body {
     height: 2px;
     /* Adjusted Glow effect for smaller size */
     filter: drop-shadow(0 0 6px rgba(179, 217, 255, 0.8)) drop-shadow(0 0 12px rgba(179, 217, 255, 0.4));
-    animation: stars-move-spica 180s linear infinite, stars-blink-spica 8s ease-in-out infinite alternate;
+    /* Match white stars movement (fast layer: 150s) */
+    animation: stars-move-fast 150s linear infinite, stars-blink-spica 8s ease-in-out infinite alternate;
 }
 
 @keyframes stars-move-spica {
