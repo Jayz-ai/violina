@@ -115,6 +115,53 @@ body {
     }
 }
 
+/* Bright Stars (Spica-style) */
+.stars-spica {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.stars-spica::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: transparent;
+    box-shadow:
+        15vw 15vh 1px 1.5px #b3d9ff,
+        45vw 65vh 1px 1px #b3d9ff,
+        75vw 25vh 1px 2px #b3d9ff,
+        85vw 85vh 1px 1px #b3d9ff,
+        25vw 75vh 1px 1.5px #b3d9ff,
+        60vw 40vh 1px 2px #b3d9ff;
+    /* Glow effect */
+    filter: drop-shadow(0 0 8px rgba(179, 217, 255, 0.8)) drop-shadow(0 0 15px rgba(179, 217, 255, 0.4));
+    animation: stars-move-spica 180s linear infinite, stars-blink-spica 8s ease-in-out infinite alternate;
+}
+
+@keyframes stars-move-spica {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100vh);
+    }
+}
+
+@keyframes stars-blink-spica {
+    0% { opacity: 0.4; transform: scale(0.9) translateY(0); }
+    50% { opacity: 1; transform: scale(1.1) translateY(0); }
+    100% { opacity: 0.5; transform: scale(0.95) translateY(0); }
+}
+
 h1,
 h2,
 h3 {
