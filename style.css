@@ -332,6 +332,13 @@ h3 {
     letter-spacing: 1px;
 }
 
+/* About Section */
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem;
+}
+
 /* Member Grid */
 .member-grid {
     display: grid;
