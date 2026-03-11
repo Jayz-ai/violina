@@ -35,7 +35,7 @@ function readData() {
 // Function to write back data into content.js
 function writeData(data) {
     try {
-        const fileHeader = `/**\n * Violina ポートフォリオ コンテンツデータ\n */\n\nwindow.APP_DATA = `;
+        const fileHeader = `/**\n * Violina Portfolio Content Data\n */\n\nwindow.APP_DATA = `;
         const jsContent = fileHeader + JSON.stringify(data, null, 4) + ';\n';
         fs.writeFileSync(DATA_FILE, jsContent, 'utf-8');
         return true;
@@ -47,17 +47,17 @@ function writeData(data) {
 
 // API: Deploy to GitHub
 app.post('/api/deploy', (req, res) => {
-    // 確実にUTF-8で実行するようにchcpを使用
+    // Ensuring UTF-8 execution
     const cmd = 'chcp 65001 > nul && git add . && git commit -m "Update news via Admin Tool" && git push origin main';
     exec(cmd, { cwd: __dirname }, (error, stdout, stderr) => {
         if (error) {
             console.error('Deploy error:', error);
             if (stdout.includes('nothing to commit') || stderr.includes('nothing to commit')) {
-                return res.json({ success: true, message: '変更がありません' });
+                return res.json({ success: true, message: 'Nothing to commit' });
             }
-            return res.status(500).json({ success: false, message: 'GitHubへの反映に失敗しました' });
+            return res.status(500).json({ success: false, message: 'Failed to deploy to GitHub' });
         }
-        res.json({ success: true, message: 'GitHubへの反映が完了しました' });
+        res.json({ success: true, message: 'Deployment successful' });
     });
 });
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
         <header>
             <h1>Violina News Admin</h1>
             <div class="header-actions">
-                <button id="btn-deploy" class="btn-primary">GitHubに反映 (Deploy)</button>
+                <button id="btn-deploy" class="btn-primary">Deploy to GitHub</button>
                 <div id="deploy-status" class="status-msg hidden"></div>
             </div>
         </header>
@@ -20,46 +20,46 @@
             <!-- Sidebar: News List -->
             <aside class="sidebar">
                 <div class="sidebar-header">
-                    <h2>記事一覧</h2>
-                    <button id="btn-new" class="btn-secondary">+ 新規追加</button>
+                    <h2>Articles</h2>
+                    <button id="btn-new" class="btn-secondary">+ New</button>
                 </div>
                 <ul id="news-list" class="news-list">
-                    <!-- JSで描画 -->
+                    <!-- JS Content -->
                 </ul>
             </aside>
 
             <!-- Main: Editor -->
             <main class="editor">
                 <div class="editor-header">
-                    <h2 id="editor-title">記事の編集</h2>
+                    <h2 id="editor-title">Edit Article</h2>
                     <div id="save-status" class="status-msg hidden"></div>
                 </div>
 
                 <form id="news-form">
                     <input type="hidden" id="news-id">
                     <div class="form-group">
-                        <label for="news-number-id">管理用ID (自動採番されます)</label>
+                        <label for="news-number-id">Internal ID (Auto-numbered)</label>
                         <input type="number" id="news-number-id" readonly>
                     </div>
                     <div class="form-group">
-                        <label for="news-date">日付 (YYYY.MM.DD)</label>
+                        <label for="news-date">Date (YYYY.MM.DD)</label>
                         <input type="text" id="news-date" placeholder="2025.05.01">
                     </div>
                     <div class="form-group">
-                        <label for="news-title">タイトル</label>
-                        <input type="text" id="news-title" placeholder="ニュースのタイトルを入力">
+                        <label for="news-title">Title</label>
+                        <input type="text" id="news-title" placeholder="News title">
                     </div>
                     <div class="form-group">
-                        <label for="news-content">内容</label>
-                        <textarea id="news-content" rows="15" placeholder="ニュースの詳細内容を入力"></textarea>
+                        <label for="news-content">Content</label>
+                        <textarea id="news-content" rows="15" placeholder="News content"></textarea>
                     </div>
                 </form>
 
                 <div class="editor-actions">
-                    <button id="btn-preview" class="btn-outline">プレビュー</button>
+                    <button id="btn-preview" class="btn-outline">Preview</button>
                     <div class="save-buttons">
-                        <button id="btn-save-draft" class="btn-secondary">下書き保存 (非表示)</button>
-                        <button id="btn-publish" class="btn-primary">公開として保存</button>
+                        <button id="btn-save-draft" class="btn-secondary">Save as Draft (Hidden)</button>
+                        <button id="btn-publish" class="btn-primary">Save as Public</button>
                     </div>
                 </div>
             </main>
@@ -70,7 +70,7 @@
     <div id="preview-modal" class="modal hidden">
         <div class="modal-content">
             <header class="modal-header">
-                <h3>プレビュー表示</h3>
+                <h3>Post Preview</h3>
                 <button id="btn-close-preview" class="btn-close">×</button>
             </header>
             <div class="preview-area glass-morphism">

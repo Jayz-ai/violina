@@ -8,22 +8,22 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btn-save-draft').addEventListener('click', () => saveNews('hidden'));
     document.getElementById('btn-publish').addEventListener('click', () => saveNews('public'));
 
-    // プレビュー機能
+    // Preview feature
     document.getElementById('btn-preview').addEventListener('click', showPreview);
     document.getElementById('btn-close-preview').addEventListener('click', () => {
         document.getElementById('preview-modal').classList.add('hidden');
     });
 
-    // GitHub反映機能
+    // Deploy to GitHub
     document.getElementById('btn-deploy').addEventListener('click', deployToGitHub);
 });
 
 async function deployToGitHub() {
-    const isConfirm = confirm('変更内容がユーザーに見える形で公開されますがよろしいですか');
+    const isConfirm = confirm('This will deploy your changes to GitHub Pages. Continue?');
     if (!isConfirm) return;
 
     const statusEl = document.getElementById('deploy-status');
-    statusEl.textContent = '🔄 実行中...';
+    statusEl.textContent = '🔄 Deploying...';
     statusEl.style.color = 'var(--primary-color)';
     statusEl.classList.remove('hidden');
 
@@ -32,15 +32,15 @@ async function deployToGitHub() {
         const result = await response.json();
 
         if (result.success) {
-            statusEl.textContent = '✔ 完了しました';
+            statusEl.textContent = '✔ Success';
             statusEl.style.color = 'var(--success-color)';
         } else {
-            statusEl.textContent = '❌ エラー: ' + result.message;
+            statusEl.textContent = '❌ Error: ' + result.message;
             statusEl.style.color = 'var(--danger-color)';
         }
     } catch (e) {
         console.error(e);
-        statusEl.textContent = '❌ 通信エラー';
+        statusEl.textContent = '❌ Connection Error';
         statusEl.style.color = 'var(--danger-color)';
     }
 
@@ -54,7 +54,7 @@ async function fetchNews() {
         const response = await fetch('/api/news');
         newsData = await response.json();
 
-        // Ensure every item has a status (default to public for existing ones)
+        // Ensure every item has a status
         newsData.forEach(item => {
             if (!item.status) item.status = 'public';
         });
@@ -78,10 +78,9 @@ function renderList() {
         const li = document.createElement('li');
         li.className = `news-list-item ${index === currentIndex ? 'selected' : ''}`;
 
-        // フォーマットされたID (01, 02...)
         const displayId = String(item.id).padStart(2, '0');
         const statusClass = item.status === 'public' ? 'status-public' : 'status-hidden';
-        const statusText = item.status === 'public' ? '公開中' : '非表示（下書き）';
+        const statusText = item.status === 'public' ? 'Public' : 'Hidden (Draft)';
 
         li.innerHTML = `
             <div class="item-main-info">
@@ -90,15 +89,13 @@ function renderList() {
                 <div class="item-status ${statusClass}">${statusText}</div>
             </div>
             <div class="order-controls">
-                <button class="btn-order btn-up" title="上へ" ${index === 0 ? 'disabled' : ''}>▲</button>
-                <button class="btn-order btn-down" title="下へ" ${index === newsData.length - 1 ? 'disabled' : ''}>▼</button>
+                <button class="btn-order btn-up" title="Move Up" ${index === 0 ? 'disabled' : ''}>▲</button>
+                <button class="btn-order btn-down" title="Move Down" ${index === newsData.length - 1 ? 'disabled' : ''}>▼</button>
             </div>
         `;
 
-        // 項目自体のクリックで編集
         li.querySelector('.item-main-info').addEventListener('click', () => selectItem(index));
 
-        // 並び替えボタンのイベント
         const btnUp = li.querySelector('.btn-up');
         const btnDown = li.querySelector('.btn-down');
 
@@ -130,13 +127,13 @@ async function pushNewsDataToServer(successMsg) {
         const result = await response.json();
         if (result.success) {
             renderList();
-            showStatusMessage(successMsg || '✔ 保存しました');
+            showStatusMessage(successMsg || '✔ Saved');
         } else {
-            alert('保存に失敗しました。');
+            alert('Failed to save.');
         }
     } catch (e) {
         console.error(e);
-        alert('通信エラーが発生しました。');
+        alert('Connection error occurred.');
     }
 }
 
@@ -152,7 +149,7 @@ async function moveItem(fromIndex, toIndex) {
         currentIndex = fromIndex;
     }
 
-    await pushNewsDataToServer('✔ 順序を保存しました');
+    await pushNewsDataToServer('✔ Order saved');
 }
 
 function selectItem(index) {
@@ -160,8 +157,8 @@ function selectItem(index) {
     renderList();
 
     const item = newsData[index];
-    document.getElementById('editor-title').textContent = `記事の編集 (ID: ${String(item.id).padStart(2, '0')})`;
-    document.getElementById('news-id').value = index; // Array index
+    document.getElementById('editor-title').textContent = `Edit Article (ID: ${String(item.id).padStart(2, '0')})`;
+    document.getElementById('news-id').value = index;
     document.getElementById('news-number-id').value = item.id;
     document.getElementById('news-date').value = item.date;
     document.getElementById('news-title').value = item.title;
@@ -174,15 +171,13 @@ function createNew() {
     currentIndex = -1;
     renderList();
 
-    // 採番 (最大ID + 1)
     const maxId = newsData.reduce((max, item) => Math.max(max, item.id), 0);
     const newId = maxId + 1;
 
-    // 今日の日付 (YYYY.MM.DD)
     const today = new Date();
     const dateStr = `${today.getFullYear()}.${String(today.getMonth() + 1).padStart(2, '0')}.${String(today.getDate()).padStart(2, '0')}`;
 
-    document.getElementById('editor-title').textContent = `新規追加 (ID: ${String(newId).padStart(2, '0')})`;
+    document.getElementById('editor-title').textContent = `New Article (ID: ${String(newId).padStart(2, '0')})`;
     document.getElementById('news-id').value = 'new';
     document.getElementById('news-number-id').value = newId;
     document.getElementById('news-date').value = dateStr;
@@ -192,7 +187,7 @@ function createNew() {
     hideStatusMessage();
 }
 
-// URLをaタグに変換するヘルパー
+// Helper to convert URLs to <a> tags
 function linkify(text) {
     const urlRegex = /(https?:\/\/[^\s]+)/g;
     return text.replace(urlRegex, function (url) {
@@ -208,7 +203,7 @@ function showPreview() {
     document.getElementById('preview-title').textContent = title;
     document.getElementById('preview-date').textContent = date;
 
-    // 改行を <br> に、URLをリンクに
+    // Convert newlines to <br> and URLs to links
     let htmlContent = linkify(rawContent).replace(/\n/g, '<br>');
     document.getElementById('preview-content').innerHTML = htmlContent;
 
@@ -218,7 +213,6 @@ function showPreview() {
 async function saveNews(targetStatus) {
     const numId = parseInt(document.getElementById('news-number-id').value);
 
-    // 新規作成かどうかのフラグ
     const isNew = document.getElementById('news-id').value === 'new';
 
     const newItem = {
@@ -229,26 +223,21 @@ async function saveNews(targetStatus) {
         status: targetStatus
     };
 
-    // IDで既存の記事を探す
     const existingIndex = newsData.findIndex(item => item.id === numId);
 
     if (existingIndex !== -1) {
-        // 既存記事の更新
         newsData[existingIndex] = newItem;
         currentIndex = existingIndex;
     } else {
-        // 新規記事として追加
         newsData.unshift(newItem);
         currentIndex = 0;
     }
 
-    // 保存後は常に現在のインデックスで編集モードに移行
     document.getElementById('news-id').value = currentIndex;
 
-    // タイトルの更新
-    document.getElementById('editor-title').textContent = `記事の編集 (ID: ${String(numId).padStart(2, '0')})`;
+    document.getElementById('editor-title').textContent = `Edit Article (ID: ${String(numId).padStart(2, '0')})`;
 
-    await pushNewsDataToServer('✔ 保存しました');
+    await pushNewsDataToServer('✔ Saved');
 }
 
 function showStatusMessage(msg) {
