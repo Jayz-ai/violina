@@ -5,6 +5,13 @@
 window.APP_DATA = {
     "news": [
         {
+            "id": 19,
+            "date": "2026.04.05",
+            "title": "感動のＭＶ公開！「Scar Red-LIVE Ver.-」「Play my lilfe」",
+            "content": "3/29（土）のAISpringFES2026で圧倒的な映像美で視聴者の目を奪ったViolina。\nその圧巻のパフォーマンス動画から、2曲切り出して公開しました🎉\n\n💃Scar Red -LIVE Ver.-\nhttps://youtu.be/aRqj8mjEAGQ?si=-K-OuugSX1qow8a3\n\n🌟Play my life\nhttps://youtu.be/x8ucBTGEx10?si=Cbs6bEy45Yluh5U6\n\n気に入っていただけたら、いいね、チャンネル登録をお願いします！\n\nこれ以外の曲の動画も順次公開予定です！\nご期待ください🎻",
+            "status": "public"
+        },
+        {
             "id": 17,
             "date": "2026.03.06",
             "title": "【出演情報】AISpringFES2026出演及び当日の配信詳細",
