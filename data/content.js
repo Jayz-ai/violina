@@ -30,7 +30,7 @@ window.APP_DATA = {
             "date": "2026.03.06",
             "title": "🎉オフィシャルサイト公開！🎉",
             "content": "刹那と幻想のAIサウンドユニット Violina のオフィシャルWebサイトがオープンしました！\n新曲情報など更新していきますので、よろしくお願いします🎻✨",
-            "status": "public"
+            "status": "hidden"
         }
     ],
     "goodsImages": [
